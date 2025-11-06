@@ -1,0 +1,12 @@
+services:
+  project-service:
+    build: .
+    container_name: project-service
+    ports:
+      - "8082:8082"
+    environment:
+      - PORT=8082
+      - NODE_ENV=production
+      - JWT_SECRET=super_secret_key
+      - MONGO_URI=mongodb+srv://kegzpeach:hlHe8HN2m8TgOB1F@tangomanagement.ngouqxc.mongodb.net/tcms_project
+    restart: unless-stopped
