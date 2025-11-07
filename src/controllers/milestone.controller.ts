@@ -10,6 +10,16 @@ export const getMilestones = async (req: Request, res: Response) => {
   }
 };
 
+export const getById = async (req: Request, res: Response) => {
+  try {
+    const record = await MilestoneModel.findById(req.params.id);
+    if (!record) return res.status(404).json({ message: "Record not found" });
+    res.json(record);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching Record", error });
+  }
+};
+
 export const createMilestone = async (req: Request, res: Response) => {
   try {
     const milestone = await MilestoneModel.create({
